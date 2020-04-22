@@ -11,6 +11,7 @@ dotenv.config();
 const app = express();
 
 // init spotify config
+const IP = process.env.IP;
 const spClientId = process.env.SPOTIFY_CLIENT_ID;
 const spClientSecret = process.env.SPOTIFY_CLIENT_SECRET;
 const spClientCallback = process.env.SPOTIFY_CLIENT_CALLBACK;
@@ -128,7 +129,6 @@ app.post('/swap', async (req, res) => {
 		if (result.refresh_token) {
 			result.refresh_token = encrypt(result.refresh_token);
 		}
-
 		// send response
 		res.status(response.statusCode).json(result);
 	}
@@ -197,4 +197,4 @@ app.post('/refresh', async (req, res) => {
 
 // start server
 const spServerPort = process.env.PORT ? parseInt(process.env.PORT) : 3000;
-app.listen(spServerPort, () => console.log('Example app listening on port '+spServerPort+'!'));
+app.listen(spServerPort, IP,  () => console.log('Example app listening on port '+spServerPort+'!'));
