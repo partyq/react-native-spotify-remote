@@ -53,7 +53,7 @@ export default interface SpotifyApiConfig {
      * @type {ApiScope}
      * @memberof SpotifyApiConfig
      */
-    scope?:ApiScope;
+    scopes?:ApiScope[];
 
     /**
      * Whether or not the auth dialog should be shown.
@@ -63,4 +63,9 @@ export default interface SpotifyApiConfig {
      * @memberof SpotifyApiConfig
      */
     showDialog?:boolean;
+}
+
+export const API_CONFIG_DEFAULTS :Partial<SpotifyApiConfig> = {
+    showDialog:false,
+    scopes:[]
 }
